@@ -225,12 +225,132 @@
       background: linear-gradient(180deg, transparent, rgba(0,0,0,0.2));
     }
     .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      max-width: 1200px;
       width: 100%;
     }
+    .screenshot-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+    .screenshot-row.reverse {
+      direction: rtl;
+    }
+    .screenshot-row.reverse > * {
+      direction: ltr;
+    }
+    .screenshot-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .screenshot-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .screenshot-content p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .screenshot-phone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    @media (max-width: 768px) {
+      .screenshot-row {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .screenshot-row.reverse {
+        direction: ltr;
+      }
+      .screenshot-content h2 {
+        font-size: 1.5rem;
+      }
+      .screenshot-content p {
+        font-size: 0.9rem;
+      }
+      .iphone-container {
+        width: 220px;
+        height: 456px;
+      }
+      .iphone-label {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .info-section {
+        padding: 60px 16px;
+      }
+      .info-grid {
+        gap: 50px;
+      }
+      .screenshot-content h2 {
+        font-size: 1.3rem;
+      }
+      .screenshot-content p {
+        font-size: 0.85rem;
+      }
+      .iphone-container {
+        width: 180px;
+        height: 372px;
+      }
+    }
+    /* iPhone Placeholder */
+    .iphone-container {
+      position: relative;
+      width: 280px;
+      height: auto;
+      background: #000;
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 80px rgba(168, 85, 247, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .iphone-container:hover {
+      transform: translateY(-8px);
+    }
+    .iphone-notch {
+      display: none;
+    }
+    .iphone-screen {
+      position: relative;
+      width: 100%;
+      height: auto;
+      background: #000;
+      border-radius: 32px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .screenshot-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 32px;
+    }
+    .iphone-label {
+      text-align: center;
+      margin-top: 20px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
     .info-card {
       padding: 28px;
       border-radius: 24px;
@@ -269,6 +389,121 @@
     }
     footer a:hover {
       color: rgba(255,255,255,0.6);
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      background: linear-gradient(180deg, rgba(0,0,0,0.1), transparent);
+    }
+    .how-container {
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .how-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .how-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .how-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .step-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 24px;
+      border-radius: 16px;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.08) 0%,
+        rgba(255,255,255,0.04) 100%
+      );
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.12) 0%,
+        rgba(255,255,255,0.06) 100%
+      );
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+    .step-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: rgba(168, 85, 247, 0.8);
+    }
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .step-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Code Snippet */
+    .code-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .code-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+    }
+    .code-block {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: 'Monaco', 'Menlo', 'SF Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.8);
+    }
+    .code-block code {
+      color: inherit;
+    }
+    .code-keyword { color: #a78bfa; }
+    .code-string { color: #86efac; }
+    .code-number { color: #fbbf24; }
+    .code-comment { color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 768px) {
+      .how-header h2 {
+        font-size: 1.8rem;
+      }
+      .how-steps {
+        grid-template-columns: 1fr;
+      }
+      .code-block {
+        font-size: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -317,23 +552,126 @@
     </div>
   </section>
 
-  <!-- Info Section -->
+  <!-- Screenshots Section -->
   <section class="info-section">
     <div class="info-grid">
-      <div class="info-card glass">
-        <div class="info-title">Daily Market Analysis</div>
-        <div class="info-desc">Our AI processes market data every weekday morning to identify high-potential stocks before the market opens.</div>
+      <!-- Row 1: Phone on Left -->
+      <div class="screenshot-row">
+        <div class="screenshot-phone">
+          <div class="iphone-container">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">
+              <img src="screenshots/ios-1-home.png" alt="StockGenie Home Screen" class="screenshot-img">
+            </div>
+          </div>
+          <div class="iphone-label">Home Screen</div>
+        </div>
+        <div class="screenshot-content">
+          <h2>Daily Market Analysis</h2>
+          <p>Every weekday morning, our advanced AI analyzes thousands of data points to identify stocks with the highest potential for growth. Get actionable insights delivered straight to your device before the market opens.</p>
+        </div>
       </div>
-      <div class="info-card glass">
-        <div class="info-title">Free Daily Pick</div>
-        <div class="info-desc">Start with our top-rated stock pick of the day, delivered to your device every trading morning at no cost.</div>
+
+      <!-- Row 2: Phone on Right -->
+      <div class="screenshot-row reverse">
+        <div class="screenshot-phone">
+          <div class="iphone-container">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">
+              <img src="screenshots/ios-2-daily-pick.png" alt="Daily Pick Screen" class="screenshot-img">
+            </div>
+          </div>
+          <div class="iphone-label">Daily Pick</div>
+        </div>
+        <div class="screenshot-content">
+          <h2>Your Free Daily Pick</h2>
+          <p>Get instant access to our top AI-selected stock every trading day, completely free. No required subscriptions, no hidden fees. Just pure market intelligence delivered with precision and clarity.</p>
+        </div>
       </div>
-      <div class="info-card glass">
-        <div class="info-title">Premium Subscription</div>
-        <div class="info-desc">Access the full list of top 5 daily picks and explore a rolling 7-day history of AI performance for $4.99 per month.</div>
+
+      <!-- Row 3: Phone on Left -->
+      <div class="screenshot-row">
+        <div class="screenshot-phone">
+          <div class="iphone-container">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">
+              <img src="screenshots/ios-3-premium.png" alt="Premium Features" class="screenshot-img">
+            </div>
+          </div>
+          <div class="iphone-label">Premium Features</div>
+        </div>
+        <div class="screenshot-content">
+          <h2>Premium Subscription</h2>
+          <p>Unlock the full power of StockGenie. Get the top 5 daily picks, track AI performance over the last 7 days, and make smarter investment decisions. Just $4.99/month.</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <div class="how-container">
+      <div class="how-header">
+        <h2>How Does It Work?</h2>
+        <p>Every trading day, our AI-powered system processes vast amounts of market data from multiple sources and distills it into a single, actionable recommendation.</p>
+      </div>
+
+      <div class="how-steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Data Sources</h3>
+          <p class="step-desc">We aggregate market signals from financial newspapers, analyst reports, and financial article feeds.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3 class="step-title">NLP Analysis</h3>
+          <p class="step-desc">Our machine learning models analyze sentiment, detect key catalysts (earnings, FDA approvals, partnerships), and identify pure-play opportunities.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Intelligent Ranking</h3>
+          <p class="step-desc">We weight quality signals over raw volume, penalize mega-caps to surface hidden gems, and boost stocks with clear, actionable narratives.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3 class="step-title">Single Output</h3>
+          <p class="step-desc">The top-ranked stock is delivered to your phone at 9AM EST on trading days. Premium subscribers get the full top-5 list at the same time.</p>
+        </div>
+      </div>
+
+      <div class="code-section">
+        <div class="code-title">The Aggregation Algorithm</div>
+        <div class="code-block"><pre><code><span class="code-comment">// Simplified aggregation workflow</span>
+<span class="code-keyword">const</span> aggregateAndRank = <span class="code-keyword">function</span>(sources) {
+  <span class="code-keyword">const</span> scoredStocks = sources.<span class="code-keyword">map</span>(stock => {
+    <span class="code-keyword">let</span> score = <span class="code-number">0</span>;
+    
+    <span class="code-comment">// Base signals: confidence, sentiment, source quality</span>
+    score += (confidence × <span class="code-number">0.45</span>)
+           + (sentiment × <span class="code-number">0.20</span>)
+           + (qualitySources × <span class="code-number">0.05</span>);
+    
+    <span class="code-comment">// Catalyst boost: earnings, FDA, partnerships, etc.</span>
+    <span class="code-keyword">if</span> (detectCatalysts(articles) > <span class="code-number">1</span>) {
+      score *= <span class="code-number">1.40</span>; <span class="code-comment">// +40% bonus</span>
+    }
+    
+    <span class="code-comment">// Penalize mega-caps, reward small/mid-cap gems</span>
+    <span class="code-keyword">if</span> (isMegaCap) {
+      score *= <span class="code-number">0.75</span>; <span class="code-comment">// -25% penalty</span>
+    } <span class="code-keyword">else if</span> (isSmallCap) {
+      score *= <span class="code-number">1.35</span>; <span class="code-comment">// +35% bonus</span>
+    }
+    
+    <span class="code-keyword">return</span> { ticker, score };
+  });
+  
+  <span class="code-keyword">return</span> scoredStocks.<span class="code-keyword">sortBy</span>(score).<span class="code-keyword">slice</span>(<span class="code-number">0</span>, <span class="code-number">5</span>);
+};</code></pre></div>
+      </div>
+    </div>
+  </section>
+
 
   <footer>
     © <span id="year"></span> <a href="https://fromamerica-llc.com/" target="_blank" rel="noopener noreferrer">FROM AMERICA LLC</a>. All rights reserved.
