@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support & FAQ — StockGenie</title>
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --glass-highlight: rgba(255, 255, 255, 0.25);
+      --purple-glow: rgba(168, 85, 247, 0.5);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, rgb(13, 0, 38) 0%, rgb(26, 13, 51) 50%, rgb(38, 26, 64) 100%);
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Rounded', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 80px;
+    }
+
+    /* Starfield */
+    .stars {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        radial-gradient(1px 1px at 5% 12%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.5px 1.5px at 15% 35%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 28% 8%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 42% 62%, white, transparent),
+        radial-gradient(1px 1px at 55% 22%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 68% 78%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 82% 45%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 95% 15%, white, transparent);
+      background-size: 400px 400px;
+      animation: twinkle 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    /* Top Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.12) 0%,
+        rgba(255,255,255,0.06) 100%
+      );
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-brand {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 8px 14px;
+      border-radius: 20px;
+      transition: all 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: white;
+      background: rgba(255,255,255,0.1);
+    }
+    .nav-links a.active {
+      color: white;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* Support Container */
+    .support-container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .support-content {
+      background: rgba(255,255,255,0.95);
+      color: #1a1a1a;
+      border-radius: 12px;
+      padding: 40px;
+      line-height: 1.6;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: #000;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 10px;
+    }
+
+    h2:first-of-type {
+      margin-top: 30px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: #7c3aed;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #6d28d9;
+      text-decoration: underline;
+    }
+
+    .faq-item {
+      background: #f9f9f9;
+      padding: 20px;
+      margin: 15px 0;
+      border-left: 4px solid #7c3aed;
+      border-radius: 4px;
+    }
+
+    .faq-item h3 {
+      margin-top: 0;
+      color: #1a1a1a;
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 40px;
+      color: white;
+    }
+
+    .contact-section h2 {
+      color: white;
+      border-bottom-color: rgba(255,255,255,0.3);
+    }
+
+    .contact-section p {
+      color: rgba(255,255,255,0.9);
+      margin: 10px 0;
+    }
+
+    .nav-footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .nav-footer a {
+      margin: 0 15px;
+      display: inline-block;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.4rem; }
+      .support-content { padding: 20px; }
+      .nav-links { gap: 4px; }
+      .nav-links a { padding: 6px 10px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+
+  <!-- Fixed Nav -->
+  <nav>
+    <a href="/" class="nav-brand">StockGenie</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="support.html" class="active">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </nav>
+
+  <div class="support-container">
+    <div class="support-content">
+      <h1>StockGenie Support</h1>
+      <p style="margin-top: 20px; font-size: 1rem;">Have a question? We're here to help.</p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>How do I use StockGenie?</h3>
+        <p>Open the app and view the daily stock pick on the Home tab. The free tier includes one pick per day with up to three reasons based on news sentiment and market signals.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What does Premium offer?</h3>
+        <p>Premium subscribers get multiple daily picks (top 5), historical performance tracking, and real-time alerts. Subscribe through Settings > Subscriptions.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How do I cancel my subscription?</h3>
+        <p>Go to your Apple Settings > iCloud > Subscriptions > StockGenie > Cancel Subscription. Your access continues until the end of your billing period.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is this investment advice?</h3>
+        <p>No. StockGenie is for informational and educational purposes only. It is not financial advice. Always consult with a licensed financial advisor before making investment decisions.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What data do you collect?</h3>
+        <p>Minimal data. We do not collect your name, email, financial accounts, or identity. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do you share my data?</h3>
+        <p>No. We do not sell or share your personal data. Third-party services (Polygon, Finnhub) only receive ticker symbols.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Why didn't I get a stock pick today?</h3>
+        <p>StockGenie generates picks every day at 9 AM ET. If you don't see a pick, try refreshing the app or check back later.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>The app crashed. How do I report it?</h3>
+        <p>Contact <a href="mailto:StockGenie@fromamerica-llc.com">StockGenie@fromamerica-llc.com</a> with:
+        <ul style="margin-left: 20px; margin-top: 10px;">
+          <li>What you were doing when it crashed</li>
+          <li>Device type and iOS version</li>
+          <li>Screenshot of error (if any)</li>
+        </ul></p>
+      </div>
+
+      <div class="contact-section">
+        <h2>Contact & Support</h2>
+        <p><strong>Email:</strong> <a href="mailto:StockGenie@fromamerica-llc.com" style="color: white; text-decoration: underline;">StockGenie@fromamerica-llc.com</a></p>
+        <p><strong>Response time:</strong> 24-48 business hours</p>
+        <p style="margin-top: 20px; font-size: 0.9rem;">We read every message and will get back to you as soon as possible.</p>
+      </div>
+
+      <div class="nav-footer">
+        <a href="/">← Back to Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
